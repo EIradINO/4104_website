@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>anime</title>
+    <style>
+        body {
+            background-color: beige;
+            transition: all 1s;
+        }
+        
+        .bodyfadeout {
+            opacity: 0;
+        }
+        
+        button {
+            width: 40px;
+            height: 40px;
+            background-color: coral;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .anime3 {
+            transition: all 1s ease-in;
+            margin-left: 110vw;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="button3"></button>
+
+    <script>
+        const body = document.getElementsByTagName('body')[0];
+
+        function google2() {
+            location.href = 'index.html'
+        }
+
+        var bt3 = document.getElementById('button3');
+        bt3.addEventListener('click', function(){
+            body.classList.add('anime3');
+            setTimeout(google2, 1500);
+        });
+
+    </script>
+</body>
+
+</html>

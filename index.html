@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>RADWIMPS</title>
+    <style>
+        html {
+            background: #cccccc;
+        }
+        body {
+            background: rgba(255, 255, 255, 0.5);
+            margin: 0;
+        }
+        .container {
+            margin: 0 20vw;
+            padding: 3vw;
+            font-size: 16px;
+            background: white;
+            box-shadow: 0 0 50px 5px rgba(0,0,0,0.4);;
+        }
+
+        h1{
+            font-size: 2em;
+            margin-bottom: 50px;
+            border-bottom: double 5px #333
+        }
+
+        a {
+            position: relative;
+            display: inline-block;
+            text-decoration: none;
+            color: #414fa3;
+            font-size: 1.25em;
+        }
+        a::after {
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            content: '';
+            width: 100%;
+            height: 2px;
+            background: #414fa3;
+            transform: scale(0, 1);
+            transform-origin: left top;
+            transition: transform .3s;
+        }
+        a:hover::after {
+            transform: scale(1, 1);
+        }
+
+        img {
+              width: 100%;
+              margin: 50px auto;
+
+        }
+
+        .red_text {
+            color: red;
+        }
+
+        .blue_text {
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>RADWIMPS</h1>
+        <p>RADWIMPS（ラッドウィンプス）は、日本の4人組ロックバンドである。所属レコード会社はユニバーサルミュージック、所属レーベルはEMI Records/Don Manacca。所属事務所は有限会社ボクチン（英語: voque ting、所属はRADWIMPSのみ）。略称は「ラッド」。
+            バンド名は、「すごい」「強い」「いかした」という意味の軽いアメリカ英語の俗語「rad」と、「弱虫」「意気地なし」という意味の「wimp」を組み合わせた造語であり、「かっこいい弱虫」「見事な意気地なし」「まじスゲーびびり野郎」といった意味である。(Wikipedia引用)</p>
+        <a href="https://radwimps.jp/">公式サイト</a>
+        <br>
+        <img src="radwimps.jpg">
+        <div class="audio_wrap">
+            <div class="audio_button"></div>
+            <audio id="audio" src="bgm.mp3" loop>
+              あなたのブラウザーは <code>audio</code> 要素をサポートしていません。
+            </audio>
+        </div>
+        <label for="colorWell">背景色を変更する:</label>
+        <input type="color" id="colorWell" value="#ffffff" />
+        <p><a href="sub.html">aiueo</a></p>
+    </div>
+    
+    <script>
+        var colorWell;
+        var defaultColor = "#ffffff";
+
+        window.addEventListener("load", startup, false);
+
+        function startup() {
+            colorWell = document.querySelector("#colorWell");
+            colorWell.value = defaultColor;
+            colorWell.addEventListener("input", updateFirst, false);
+            colorWell.addEventListener("change", updateAll, false);
+            colorWell.select();
+        }
+
+        function updateFirst(event) {
+            var html = document.querySelector("html");
+        
+            if (html) {
+            html.style.backgroundColor = event.target.value;
+            }
+        }
+
+        function updateAll(event) {
+            document.querySelectorAll("html").forEach(function(html) {
+            html.style.backgroundColor = event.target.value;
+            });
+        }
+
+        $(function () {
+            var audioBtn = $('.audio_button'),
+            audioWrap = $('.audio_wrap'),
+            audio = document.getElementById('audio');
+        
+            audioBtn.on('click', function () {
+            if( audioWrap.hasClass('play') ) {
+                audio.pause();
+                audioWrap.removeClass('play');
+            } else {
+                audio.play();
+                audioWrap.addClass('play');
+            }
+            });
+        });
+    </script>
+</body>
+</html>
